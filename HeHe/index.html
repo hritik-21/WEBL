@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Hritik!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff8fa3;
+            --bg-color: #fff0f3;
+            --text-color: #590d22;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%);
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden;
+            color: var(--text-color);
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 90%;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease-in;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .heart-btn {
+            font-size: 5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.1s;
+            filter: drop-shadow(0px 10px 15px rgba(255, 77, 109, 0.4));
+            animation: pulse 1.5s infinite;
+            user-select: none;
+        }
+
+        .heart-btn:active {
+            transform: scale(0.9);
+        }
+
+        .progress-container {
+            width: 300px;
+            height: 20px;
+            background: #fff;
+            border-radius: 20px;
+            margin: 30px auto;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff4d6d, #ff8fa3);
+            transition: width 0.3s ease;
+        }
+
+        .message-box {
+            height: 50px;
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            transition: opacity 0.2s;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 100; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 5px solid var(--primary-color);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .couple-photo {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 280px; 
+            border-radius: 15px;
+            margin: 0 auto 15px auto; 
+            display: block; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid var(--primary-color);
+            object-fit: contain; 
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.3);
+            animation: floatUp 10s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="bg-hearts-container"></div>
+
+    <div class="container">
+        <h1>Hey Gundu ❤️</h1>
+        <p class="subtitle">I have a surprise for you. <br>Keep clicking the heart to unlock it!</p>
+        
+        <button class="heart-btn" id="clickHeart" onclick="handleClick()">❤️</button>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="message-box" id="messageBox">
+            Let's see how much I love you...
+        </div>
+    </div>
+
+    <div id="surpriseModal" class="modal">
+        <div class="card">
+            <h2>Happy Anniversary!</h2>
+            <img src="us.jpg" alt="Us" class="couple-photo">
+            <p id="finalMessage">
+                To my favorite person in the world,<br><br>
+                Being with you has been the best adventure of my life.<br>
+                No matter how hard times get, I know you'll always be there for me.<br>
+                To the most deserving and lovable and cherishable man in the universe, 
+                here is to more laughter, more love, and more us.
+                <br><br>
+                I love you so much! ❤️
+            </p>
+            <button class="close-btn" onclick="location.reload()">Replay Love</button>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "You make me laugh every day 😊",
+            "You have the best biceps💪🏻 and lips💋",
+            "I love your laugh ✨",
+            "You are my safe space 🏠",
+            "You're the smartest guy I know 🧠",
+            "I love our late night talks 🌙",
+            "You support my dreams 🚀",
+            "You are simply perfect to me ❤️",
+            "Almost there... keep going! 🔓"
+        ];
+        
+        let clickCount = 0;
+        const clicksToUnlock = 10; 
+        const heartBtn = document.getElementById('clickHeart');
+        const progressBar = document.getElementById('progressBar');
+        const messageBox = document.getElementById('messageBox');
+        const modal = document.getElementById('surpriseModal');
+
+        function createFloatingHearts() {
+            const container = document.getElementById('bg-hearts-container');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('bg-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createFloatingHearts();
+
+        function handleClick() {
+            if (clickCount >= clicksToUnlock) return;
+
+            clickCount++;
+            
+            const percentage = (clickCount / clicksToUnlock) * 100;
+            progressBar.style.width = percentage + '%';
+
+            if (clickCount < clicksToUnlock) {
+                const msgIndex = (clickCount - 1) % messages.length;
+                messageBox.style.opacity = 0; 
+                setTimeout(() => {
+                    messageBox.innerText = messages[msgIndex];
+                    messageBox.style.opacity = 1; 
+                }, 200);
+            }
+
+            confetti({
+                particleCount: 15,
+                spread: 50,
+                origin: { y: 0.6 },
+                colors: ['#ff4d6d', '#ff8fa3', '#fff']
+            });
+
+            heartBtn.style.transform = "scale(0.8)";
+            setTimeout(() => heartBtn.style.transform = "scale(1)", 100);
+
+            if (clickCount === clicksToUnlock) {
+                triggerFinalSurprise();
+            }
+        }
+
+        function triggerFinalSurprise() {
+            messageBox.innerText = "UNLOCKED! 🎉";
+            
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            setTimeout(() => {
+                modal.style.display = 'flex';
+            }, 800);
+        }
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+    </script>
+</body>
+</html>

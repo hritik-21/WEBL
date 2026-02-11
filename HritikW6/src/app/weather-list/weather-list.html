@@ -1,0 +1,32 @@
+<div class="weather-widget">
+    <div class="weather-header">
+        <h2>Mumbai Forecast</h2>
+        <span class="location-icon">📍</span>
+    </div>
+
+    <div *ngIf="loading" class="weather-loading">
+        <div class="loader"></div>
+        <p>Updating forecast...</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!loading && !errorMessage" class="weather-grid">
+        <div *ngFor="let item of weatherData" class="weather-card">
+            <div class="card-date">{{ item.date | date: 'EEE, MMM d' }}</div>
+            <div class="card-icon">
+                <span *ngIf="item.code < 3">☀️</span>
+                <span *ngIf="item.code >= 3 && item.code < 50">⛅</span>
+                <span *ngIf="item.code >= 50 && item.code < 80">🌧️</span>
+                <span *ngIf="item.code >= 80">⛈️</span>
+            </div>
+            <div class="card-temp">
+                <span class="max-temp">{{ item.maxTemp }}°</span>
+                <span class="min-temp">{{ item.minTemp }}°</span>
+            </div>
+            <div class="card-desc">{{ item.description }}</div>
+        </div>
+    </div>
+</div>

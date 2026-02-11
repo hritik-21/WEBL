@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Start Monitoring Air Quality</h2>
+    <div *ngIf="loading" class="loading">Loading AQI Data...</div>
+
+    <div *ngIf="!loading" class="data-grid">
+        <div *ngFor="let item of aqiData" class="data-card">
+            <div class="card-header">
+                <h3>{{ item.location }}</h3>
+                <span class="status-badge" [class.good]="item.measurements[0].value <= 50"
+                    [class.moderate]="item.measurements[0].value > 50 && item.measurements[0].value <= 100"
+                    [class.unhealthy]="item.measurements[0].value > 100">
+                    AQI: {{ item.measurements[0].value }}
+                </span>
+            </div>
+
+            <div class="weather-info">
+                <div class="temp-display">
+                    <span class="temperature">{{ item.weather.temperature }}</span>
+                    <span class="unit">{{ item.weather.unit }}</span>
+                </div>
+                <span class="condition">{{ item.weather.condition }}</span>
+            </div>
+
+            <div class="measurements-grid">
+                <div class="measurement-item" *ngFor="let m of item.measurements">
+                    <span class="label">{{ m.parameter }}</span>
+                    <span class="value">{{ m.value }} <small>{{ m.unit }}</small></span>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <span class="timestamp">Updated: {{ item.measurements[0].lastUpdated | date:'shortTime' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!loading && aqiData.length === 0" class="no-data">
+        <p>No data available. Unable to fetch AQI/Weather information.</p>
+    </div>
+</div>
