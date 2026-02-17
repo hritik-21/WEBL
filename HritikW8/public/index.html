@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Abyss Registry 🌊</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="ocean-bg"></div>
+    <main class="registry-container">
+        <header>
+            <h1>Azure Discovery Registry</h1>
+            <p id="connectionStatus">Syncing with Deep Sea Node...</p>
+        </header>
+
+        <section class="log-grid">
+            <div class="azure-card entry-form">
+                <h2>New Log Entry</h2>
+                <form id="discoveryForm">
+                    <div class="input-group">
+                        <label>Discovery Name</label>
+                        <input type="text" id="name" placeholder="Species or Artifact..." required>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Depth (m)</label>
+                            <input type="number" id="depth" placeholder="0" required min="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Ocean Zone</label>
+                            <select id="zone" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="Sunlight">Sunlight (0-200m)</option>
+                                <option value="Twilight">Twilight (200-1000m)</option>
+                                <option value="Midnight">Midnight (1000-4000m)</option>
+                                <option value="Abyss">Abyss (4000m+)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="azure-btn">Record Transmission</button>
+                    <div id="formMsg" class="form-msg"></div>
+                </form>
+            </div>
+
+            <div class="history-section">
+                <div class="section-header">
+                    <h2>Mission Log</h2>
+                    <span id="logCount" class="counter">0 ENTRIES</span>
+                </div>
+                <div id="logStack" class="log-stack">
+                    <!-- Logs appear here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

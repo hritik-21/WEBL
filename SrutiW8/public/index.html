@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petal Registry 🌸</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="pastel-wrapper">
+        <div class="header-section">
+            <h1>Petal Registry 🌸</h1>
+            <p>Database-powered collection with soft touches.</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card form-card">
+                <form id="itemForm">
+                    <div class="field">
+                        <label>Item Name</label>
+                        <input type="text" id="name" placeholder="What did you find?" required minlength="2">
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Category</label>
+                            <select id="category" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="Decor">Decor</option>
+                                <option value="Stationery">Stationery</option>
+                                <option value="Wellness">Wellness</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Price ($)</label>
+                            <input type="number" id="price" placeholder="0.00" required step="0.01" min="0.01">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="petal-btn">Bloom Entry</button>
+                    <div id="statusMsg" class="status-msg"></div>
+                </form>
+            </div>
+
+            <div class="list-section">
+                <div class="list-header">
+                    <h2>Your Petals</h2>
+                    <span id="itemCount" class="badge">0 items</span>
+                </div>
+
+                <div id="itemStack" class="item-stack">
+                    <div class="empty-cloud">
+                        <p>Connecting to the garden...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

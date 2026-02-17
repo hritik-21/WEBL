@@ -1,0 +1,72 @@
+<main class="cyber-container">
+  <div class="glass-card main-form">
+    <header class="cyber-header">
+      <div class="status-indicator"></div>
+      <h1>Deep Space Discovery</h1>
+      <p>Log new interstellar phenomena into the decentralized registry.</p>
+    </header>
+
+    <form [formGroup]="discoveryForm" (ngSubmit)="registerDiscovery()" class="neon-form">
+      <div class="input-group">
+        <label>Object Designation</label>
+        <input type="text" formControlName="name" placeholder="e.g. Pulsar-7X"
+          [class.error-border]="discoveryForm.get('name')?.invalid && discoveryForm.get('name')?.touched">
+      </div>
+
+      <div class="row">
+        <div class="input-group">
+          <label>Sector</label>
+          <select formControlName="sector">
+            <option value="" disabled selected>Select Sector</option>
+            <option *ngFor="let s of sectors" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Discovery Date</label>
+          <input type="date" formControlName="discoveryDate">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Coordinates (X, Y)</label>
+        <input type="text" formControlName="coordinates" placeholder="12.5, -45.8"
+          [class.error-border]="discoveryForm.get('coordinates')?.invalid && discoveryForm.get('coordinates')?.touched">
+        @if (discoveryForm.get('coordinates')?.invalid && discoveryForm.get('coordinates')?.touched) {
+        <span class="error-msg">Format: Number, Number</span>
+        }
+      </div>
+
+      <button type="submit" [disabled]="discoveryForm.invalid" class="cyber-btn">
+        <span class="btn-glitch"></span>
+        INITIALIZE REGISTRY
+      </button>
+    </form>
+  </div>
+
+  <section class="logs-section">
+    <div class="section-header">
+      <h2>Transmission History</h2>
+      <span class="count">{{ discoveries().length }} LOGS FOUND</span>
+    </div>
+
+    <div class="discovery-list">
+      @for (d of discoveries(); track $index) {
+      <div class="discovery-item">
+        <div class="item-meta">
+          <span class="sector-tag">{{ d.sector }}</span>
+          <span class="date-tag">{{ d.discoveryDate }}</span>
+        </div>
+        <div class="item-body">
+          <h3>{{ d.name }}</h3>
+          <p class="coords">COORD: {{ d.coordinates }}</p>
+        </div>
+        <div class="pulse-ring"></div>
+      </div>
+      } @empty {
+      <div class="empty-log">
+        <p>Awaiting incoming data transmissions...</p>
+      </div>
+      }
+    </div>
+  </section>
+</main>

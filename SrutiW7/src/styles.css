@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary: #FFB703;
+    --primary-hover: #FB8500;
+    --primary-light: #FFEAAC;
+    --bg-color: #FFFDF5;
+    --card-bg: #FFFFFF;
+    --text-main: #332200;
+    --text-muted: #665533;
+    --border-color: #EEDD88;
+    --error: #FF4D4D;
+    --success: #4CAF50;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 8px 30px rgba(255, 183, 3, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

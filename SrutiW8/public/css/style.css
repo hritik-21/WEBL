@@ -1,0 +1,232 @@
+:root {
+    --lavender: #E0BBE4;
+    --pastel-pink: #FFDFD3;
+    --soft-blue: #D4F0F0;
+    --mint: #C5E1A5;
+    --peach: #FEC8D8;
+    --bg-main: #FBFCF8;
+    --text-main: #5D5D5D;
+    --text-soft: #8A8A8A;
+    --card-shadow: 0 10px 30px rgba(224, 187, 228, 0.15);
+    --border-radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-main);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(224, 187, 228, 0.2) 0, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(255, 223, 211, 0.2) 0, transparent 50%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.pastel-wrapper {
+    width: 100%;
+    max-width: 900px;
+    animation: softFade 1s ease;
+}
+
+@keyframes softFade {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header-section p {
+    color: var(--text-soft);
+    font-size: 1.1rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 4px solid white;
+    overflow: hidden;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-soft);
+    padding-left: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    border: 2px solid #F5F5F5;
+    border-radius: 15px;
+    background: #FAFAFA;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--text-main);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--pastel-pink);
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 223, 211, 0.4);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.petal-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--pastel-pink), var(--peach));
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.petal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(254, 200, 216, 0.4);
+}
+
+.status-msg {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--text-soft);
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.badge {
+    background: var(--lavender);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.item-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-chip {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    border-left: 8px solid var(--lavender);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.chip-main h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.chip-cat {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    background: #F5F5F5;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.chip-price {
+    font-weight: 700;
+    color: var(--text-soft);
+    font-size: 1.2rem;
+}
+
+.empty-cloud {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-soft);
+    background: rgba(224, 187, 228, 0.05);
+    border: 2px dashed var(--lavender);
+    border-radius: var(--border-radius);
+}
+
+@media (max-width: 800px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
