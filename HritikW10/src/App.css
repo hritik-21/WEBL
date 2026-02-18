@@ -1,0 +1,560 @@
+.hero {
+    background: transparent;
+    padding: 8rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-light);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+}
+
+.hero h1 {
+    font-size: 7.2rem;
+    font-weight: 800;
+    letter-spacing: -4px;
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+    line-height: 1.05;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+    font-size: 2.2rem;
+    color: var(--text-muted);
+    margin-bottom: 6rem;
+    max-width: 1000px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, var(--text-dark) 0%, #1e293b 100%);
+    color: #fff;
+    padding: 1.25rem 3rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scenarios Grid */
+.section-title {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-title span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-title h2 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    letter-spacing: -2px;
+}
+
+.section-title p {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.scenario-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 28px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.scenario-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, var(--accent-color), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.scenario-card.active {
+    border-color: var(--accent-color);
+    background: #fff;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px -10px var(--accent-color);
+}
+
+.scenario-card.active::before {
+    opacity: 0.05;
+}
+
+.scenario-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.scenario-card.active .scenario-icon {
+    box-shadow: 0 10px 20px -5px var(--accent-color);
+    transform: rotate(-5deg);
+}
+
+.scenario-card:hover:not(.active) {
+    transform: translateY(-5px);
+    border-color: rgba(0, 0, 0, 0.05);
+    background: #fff;
+}
+
+.scenario-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    white-space: wrap;
+}
+
+.scenario-card p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+/* Dynamic Info Layout */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.tab-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-navigation button {
+    padding: 1rem 2.5rem;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.tab-navigation button.active {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #1e293b 100%);
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-content {
+    padding: 4rem;
+    border-radius: 40px;
+    min-height: 450px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+}
+
+/* Dosage Guide */
+.dosage-guide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+
+.guide-item {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.guide-icon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.guide-item h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.guide-item p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.guide-item.highlight {
+    grid-column: span 2;
+    background: rgba(37, 99, 235, 0.03);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 1px dashed rgba(37, 99, 235, 0.2);
+}
+
+/* Interactions Panel */
+.interactions-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.alert-card {
+    padding: 2rem;
+    border-radius: 20px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.alert-card.danger {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.05);
+}
+
+.interaction-disclaimer {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 3px solid #e2e8f0;
+}
+
+/* Side Effects Radar */
+.radar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.radar-item {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 24px;
+}
+
+.radar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.common .radar-dot {
+    background: #10b981;
+}
+
+.rare .radar-dot {
+    background: #f59e0b;
+}
+
+.emergency .radar-dot {
+    background: #ef4444;
+}
+
+.radar-item h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.radar-item ul {
+    list-style: none;
+    font-size: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    color: var(--text-muted);
+}
+
+.call-hint {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ef4444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Missed Dose Simulator */
+.simulator-box {
+    padding: 2.5rem;
+    border-radius: 32px;
+}
+
+.simulator-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-icon {
+    color: var(--accent);
+}
+
+.simulator-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-sim {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: var(--text-dark);
+    color: white;
+}
+
+.btn-sim.outline {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
+}
+
+.btn-sim:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sim-result {
+    padding: 2rem;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.sim-result.success .result-header {
+    color: #059669;
+}
+
+.sim-result.warning .result-header {
+    color: #d97706;
+}
+
+/* Sidebar Summary Card */
+.summary-card {
+    padding: 3rem;
+    border-radius: 40px;
+    border-width: 2px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.7) 100%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+.card-top {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sum-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.sum-item strong {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+.sum-item span {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.warning-text {
+    color: #ef4444;
+}
+
+.summary-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Contact Section */
+.contact-card {
+    padding: 4rem;
+    border-radius: 40px;
+}
+
+.contact-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3.5rem;
+}
+
+.contact-header h2 {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 1.2rem 1.8rem;
+    border-radius: 16px;
+    border: 1.5px solid rgba(0, 0, 0, 0.05);
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .radar-grid {
+        grid-template-columns: 1fr;
+    }
+}

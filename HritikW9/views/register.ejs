@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Enrollment | HritikW9</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="card">
+        <h1>Project Enrollment</h1>
+        <p>Complete the form below to register your current workspace for the integration phase.</p>
+
+        <form action="/confirm" method="POST">
+            <div class="form-group">
+                <label for="project">Project Name</label>
+                <input type="text" id="project" name="project" placeholder="e.g. Project Phoenix" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Integration Type</label>
+                <select id="type" name="type">
+                    <option value="api">API Endpoint</option>
+                    <option value="webhook">Webhook Listener</option>
+                    <option value="database">Database Sync</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Additional Requirements</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Briefly describe your use case..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Application</button>
+        </form>
+
+        <a href="/" class="back-link">Return to Dashboard</a>
+    </div>
+</body>
+
+</html>
